@@ -2,7 +2,7 @@
 
 #include <cstdio>
 #include <string>
-#include <list>
+#include <map>
 #include "NetAdapter/NetAdapter.h"
 
 #ifdef _WIN32
@@ -27,4 +27,4 @@ struct AdapterInfo {
 };
 
 AdapterInfo primary_adapter();
-std::list<AdapterInfo> all_adapter();
+std::map<std::string, AdapterInfo> all_adapter();

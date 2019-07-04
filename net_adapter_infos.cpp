@@ -23,9 +23,9 @@ AdapterInfo primary_adapter() {
 }
 
 
-std::list<AdapterInfo> all_adapter() {
+std::map<std::string, AdapterInfo> all_adapter() {
 	pNetAdapterInfo* Adapters = new_pNetAdapterInfo();
-    std::list<AdapterInfo> infos;
+    std::map<std::string, AdapterInfo> infos;
 
 	size_t AdapterCount = count_pNetAdapterInfo(Adapters);
 	for ( size_t Index = 0; Index < AdapterCount; Index++ ) {
@@ -37,7 +37,7 @@ std::list<AdapterInfo> all_adapter() {
         info.broadcast = std::string(Current->Broadcast); 
         info.mac = std::string(Current->MAC); 
 
-        infos.push_back(info);
+        infos.emplace(info.mac, info);
 	}
 
 	delete_pNetAdapterInfo( Adapters );
