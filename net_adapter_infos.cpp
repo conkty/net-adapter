@@ -37,7 +37,7 @@ std::map<std::string, AdapterInfo> all_adapter() {
         info.broadcast = std::string(Current->Broadcast); 
         info.mac = std::string(Current->MAC); 
 
-        infos.emplace(info.mac, info);
+        infos.emplace(info.name, info);
 	}
 
 	delete_pNetAdapterInfo( Adapters );
